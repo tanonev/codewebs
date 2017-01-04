@@ -1,0 +1,20 @@
+2_1
+Elapsed indexing time: 0.384599252
+55438/1000 = 55.438
+
+2_2
+Elapsed indexing time: 0.421245279
+106804/1000 = 106.804
+
+2_3
+Elapsed indexing time: 0.432205327
+109079/1000 = 109.079
+
+2_4
+Elapsed indexing time: 0.268971347
+65054/1000 = 65.054
+
+2_5
+Elapsed indexing time: 0.623522451
+155352/1000 = 155.352
+

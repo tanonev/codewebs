@@ -1,0 +1,21 @@
+Noted concerns:
+
+Concern #1:
+    If you have a program with repeated lines, and the line falls under an
+    equivalence class, it will be reduced to one line:
+    
+    For example
+        while(true):
+          println(x)
+          println(x)
+      
+    Would become
+        while(true):
+          {1}
+          
+    Instead of
+        while(true):
+          {1}
+          {1}
+      
+Concern #2:

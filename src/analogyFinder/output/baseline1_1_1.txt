@@ -1,0 +1,15 @@
+SUMMARY (100)
+Correct output class, 0 bugs: 52
+Correct output class, 1+ bugs: 5
+Incorrect output class, 0 bugs: 32
+Incorrect output class, 1+ bugs: 11
+SUMMARY (200)
+Correct output class, 0 bugs: 106
+Correct output class, 1+ bugs: 6
+Incorrect output class, 0 bugs: 61
+Incorrect output class, 1+ bugs: 27
+FINAL SUMMARY
+Correct output class, 0 bugs: 116
+Correct output class, 1+ bugs: 7
+Incorrect output class, 0 bugs: 67
+Incorrect output class, 1+ bugs: 28

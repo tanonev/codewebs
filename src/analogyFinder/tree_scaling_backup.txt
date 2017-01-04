@@ -1,0 +1,62 @@
+1_1
+Elapsed indexing time: 0.13688028
+5948/218 = 27.28440366972477
+
+1_2
+Elapsed indexing time: 1.231363635
+331833/5000 = 66.3666
+
+1_3
+Elapsed indexing time: 2.338393062
+580940/4999 = 116.2112422484497
+
+1_4
+Elapsed indexing time: 2.530450535
+545067/4999 = 109.03520704140828
+
+1_5
+Elapsed indexing time: 1.225497675
+314769/5000 = 62.9538
+
+1_6
+Elapsed indexing time: 2.366511117
+565047/4999 = 113.03200640128026
+
+1_7
+Elapsed indexing time: 0.263716184
+88561/1548 = 57.20994832041344
+
+2_1
+java.io.FileNotFoundException: ../../data/matching/dist_2_1.txt (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:137)
+	at java.util.Scanner.<init>(Scanner.java:653)
+	at util.FileSystem.getNumAsts(FileSystem.java:74)
+	at models.Assignment.loadPrograms(Assignment.java:115)
+	at models.Assignment.load(Assignment.java:103)
+	at models.Assignment.loadFromFile(Assignment.java:36)
+	at experiments.TreeSizeScaling.run(TreeSizeScaling.java:32)
+	at experiments.TreeSizeScaling.main(TreeSizeScaling.java:45)
+java.io.FileNotFoundException: ../../data/matching/dist_2_1.txt (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:137)
+	at java.util.Scanner.<init>(Scanner.java:653)
+	at util.FileSystem.getCorrupts(FileSystem.java:131)
+	at models.Assignment.loadPrograms(Assignment.java:116)
+	at models.Assignment.load(Assignment.java:103)
+	at models.Assignment.loadFromFile(Assignment.java:36)
+	at experiments.TreeSizeScaling.run(TreeSizeScaling.java:32)
+	at experiments.TreeSizeScaling.main(TreeSizeScaling.java:45)
+Exception in thread "main" java.lang.RuntimeException: could not open file
+	at util.FileSystem.getCorrupts(FileSystem.java:147)
+	at models.Assignment.loadPrograms(Assignment.java:116)
+	at models.Assignment.load(Assignment.java:103)
+	at models.Assignment.loadFromFile(Assignment.java:36)
+	at experiments.TreeSizeScaling.run(TreeSizeScaling.java:32)
+	at experiments.TreeSizeScaling.main(TreeSizeScaling.java:45)
+Caused by: java.io.FileNotFoundException: ../../data/matching/dist_2_1.txt (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:137)
+	at java.util.Scanner.<init>(Scanner.java:653)
+	at util.FileSystem.getCorrupts(FileSystem.java:131)
+	... 5 more

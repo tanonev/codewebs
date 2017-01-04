@@ -1,0 +1,5 @@
+function makeSparse(fileName)
+    original = open(fileName);
+    original(original < 0) = 0;
+    matrix = sparse(original)
+    

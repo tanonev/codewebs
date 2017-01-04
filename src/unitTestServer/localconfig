@@ -1,0 +1,5 @@
+HOST inference.stanford.edu
+PATH /home/jhuang11/work/code/codeweb
+INSTALLPATH /usr/local/codewebsindexdaemon
+HW 1
+PART 3

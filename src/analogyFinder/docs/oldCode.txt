@@ -1,0 +1,66 @@
+/*private boolean inEpsilon(Node node) {
+    int postorderIndex = node.getPostorderIndex();
+    if (postorderIndex < startEpsilon) return false;
+    if (postorderIndex >= endEpsilon) return false;
+    return true;
+}
+
+private boolean deepEquals(Node a, Node b, Context bContext) {
+    if(!inEpsilon(a) && !bContext.inEpsilon(b)) {
+        if(!a.equals(b)) {
+            return false;
+        }
+    }
+    
+    List<Node> aChildren = a.getChildren();
+    List<Node> bChildren = b.getChildren();
+    int aIndex = 0;
+    int bIndex = 0;
+
+    boolean done = false;
+    while(aIndex < aChildren.size() && bIndex < bChildren.size()) {
+        Node aChild = aChildren.get(aIndex);
+        Node bChild = bChildren.get(bIndex);
+
+        
+        // If you are entering the set of nodes in "epsilon"
+        if (inEpsilon(aChild) || bContext.inEpsilon(bChild)) {
+
+            // Both contexts must enter epsilon at the same time.
+            if(!inEpsilon(aChild) || !bContext.inEpsilon(bChild)) return false;
+
+            
+            // Advance A until you are out of epsilon.
+            while(inEpsilon(aChild)) {
+                aIndex++;
+                if(aIndex >= aChildren.size()) {
+                    done = true;
+                    break;
+                }
+                aChild = aChildren.get(aIndex);
+            }
+
+            // Advance B until you are out of epsilon.
+            while(bContext.inEpsilon(bChild)) {
+                bIndex++;
+                if(bIndex >= bChildren.size()) {
+                    done = true;
+                    break;
+                }
+                bChild = bChildren.get(bIndex);
+            }
+        }
+
+        if(!done) {
+            if(!deepEquals(aChild, bChild, bContext)) return false;
+        }
+
+        aIndex += 1;
+        bIndex += 1;
+    }
+
+    //As long as there are no children left over in one context, 
+    //you have made it!
+    return aIndex == aChildren.size() && bIndex == bChildren.size();
+    //return true;
+}*/

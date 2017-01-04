@@ -1,0 +1,15 @@
+Make sure the Makefile points to your install of Octave.  You might need to update your /etc/ld.so.conf file, adding /usr/local/lib/octave/3.6.3 (or wherever your install is) to the end of the file.  If you do this, remember to run ldconfig right after.
+To run after making, run
+./astgen ../data/examplescripts/example1.m output.json output.code output.map
+
+Nodes that don't have their own explicit parse tree nodes:
+varargout (custom VARARGOUT node)
+varargin (custom VARARGIN node)
+string-based indexing (CONST node)
+
+To compute a matching (output sent to standard out), run
+./matching a.json b.json
+
+To compute the LCA of two nodes, run
+./lca output.json 19 21
+

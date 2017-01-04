@@ -1,0 +1,26 @@
+Installation part:
+
+    Make sure the following two things are installed:
+        sudo apt-get install rabbitmq-server
+        sudo pip install pika
+        sudo apt-get install jsvc
+
+    Go to src/analogyFinder/installscripts and run:
+        ./build.sh
+        ./install.sh
+            (you'll have to type in your password for sudo privileges)
+
+Actual doing stuff part:
+
+    First start server:
+        sudo /etc/init.d/codewebsindexdaemon start
+
+    Send request from client:
+        python exampleclient.py
+
+    To stop:
+        sudo /etc/init.d/codewebsindexdaemon stop
+
+
+    
+

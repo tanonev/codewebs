@@ -1,0 +1,7 @@
+To compile:
+javac -d bin -sourcepath src src/FactorAsts.java
+
+To run:
+java -classpath bin FactorAsts
+
+

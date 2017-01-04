@@ -1,0 +1,60 @@
+6_1
+Elapsed indexing time: 0.461588106
+62210/1000 = 62.21
+
+6_2
+Elapsed indexing time: 0.314001237
+115180/1000 = 115.18
+
+6_3
+Elapsed indexing time: 2.190304076
+236451/1000 = 236.451
+
+6_4
+Elapsed indexing time: 0.161529186
+54171/1000 = 54.171
+
+7_1
+Elapsed indexing time: 0.248661366
+109025/1000 = 109.025
+
+7_2
+Elapsed indexing time: 0.271876346
+88931/1000 = 88.931
+
+7_3
+Elapsed indexing time: 0.255600106
+63806/1000 = 63.806
+
+7_4
+Elapsed indexing time: 0.196830344
+65344/1000 = 65.344
+
+7_5
+Elapsed indexing time: 0.248205574
+75450/1000 = 75.45
+
+8_1
+Elapsed indexing time: 0.257732346
+77557/1000 = 77.557
+
+8_2
+Elapsed indexing time: 0.910604604
+156056/1000 = 156.056
+
+8_3
+Elapsed indexing time: 0.643604665
+159440/1000 = 159.44
+
+8_4
+Elapsed indexing time: 0.754037637
+184657/1000 = 184.657
+
+8_5
+Elapsed indexing time: 0.698656537
+213023/1000 = 213.023
+
+8_6
+Elapsed indexing time: 0.816148189
+220641/1000 = 220.641
+

@@ -1,0 +1,255 @@
+SUMMARY (100)
+Correct output class, 0 bugs: 92
+Correct output class, 1+ bugs: 1
+Incorrect output class, 0 bugs: 3
+Incorrect output class, 1+ bugs: 4
+SUMMARY (200)
+Correct output class, 0 bugs: 177
+Correct output class, 1+ bugs: 4
+Incorrect output class, 0 bugs: 6
+Incorrect output class, 1+ bugs: 13
+SUMMARY (300)
+Correct output class, 0 bugs: 266
+Correct output class, 1+ bugs: 4
+Incorrect output class, 0 bugs: 11
+Incorrect output class, 1+ bugs: 19
+SUMMARY (400)
+Correct output class, 0 bugs: 357
+Correct output class, 1+ bugs: 6
+Incorrect output class, 0 bugs: 15
+Incorrect output class, 1+ bugs: 22
+SUMMARY (500)
+Correct output class, 0 bugs: 442
+Correct output class, 1+ bugs: 11
+Incorrect output class, 0 bugs: 20
+Incorrect output class, 1+ bugs: 27
+SUMMARY (600)
+Correct output class, 0 bugs: 526
+Correct output class, 1+ bugs: 15
+Incorrect output class, 0 bugs: 27
+Incorrect output class, 1+ bugs: 32
+SUMMARY (700)
+Correct output class, 0 bugs: 615
+Correct output class, 1+ bugs: 18
+Incorrect output class, 0 bugs: 32
+Incorrect output class, 1+ bugs: 35
+SUMMARY (800)
+Correct output class, 0 bugs: 703
+Correct output class, 1+ bugs: 20
+Incorrect output class, 0 bugs: 38
+Incorrect output class, 1+ bugs: 39
+SUMMARY (900)
+Correct output class, 0 bugs: 793
+Correct output class, 1+ bugs: 23
+Incorrect output class, 0 bugs: 44
+Incorrect output class, 1+ bugs: 40
+SUMMARY (1000)
+Correct output class, 0 bugs: 879
+Correct output class, 1+ bugs: 25
+Incorrect output class, 0 bugs: 52
+Incorrect output class, 1+ bugs: 44
+SUMMARY (1100)
+Correct output class, 0 bugs: 967
+Correct output class, 1+ bugs: 27
+Incorrect output class, 0 bugs: 58
+Incorrect output class, 1+ bugs: 48
+SUMMARY (1200)
+Correct output class, 0 bugs: 1057
+Correct output class, 1+ bugs: 29
+Incorrect output class, 0 bugs: 64
+Incorrect output class, 1+ bugs: 50
+SUMMARY (1300)
+Correct output class, 0 bugs: 1140
+Correct output class, 1+ bugs: 36
+Incorrect output class, 0 bugs: 70
+Incorrect output class, 1+ bugs: 54
+SUMMARY (1400)
+Correct output class, 0 bugs: 1222
+Correct output class, 1+ bugs: 44
+Incorrect output class, 0 bugs: 77
+Incorrect output class, 1+ bugs: 57
+SUMMARY (1500)
+Correct output class, 0 bugs: 1302
+Correct output class, 1+ bugs: 48
+Incorrect output class, 0 bugs: 85
+Incorrect output class, 1+ bugs: 65
+SUMMARY (1600)
+Correct output class, 0 bugs: 1389
+Correct output class, 1+ bugs: 50
+Incorrect output class, 0 bugs: 95
+Incorrect output class, 1+ bugs: 66
+SUMMARY (1700)
+Correct output class, 0 bugs: 1471
+Correct output class, 1+ bugs: 53
+Incorrect output class, 0 bugs: 107
+Incorrect output class, 1+ bugs: 69
+SUMMARY (1800)
+Correct output class, 0 bugs: 1554
+Correct output class, 1+ bugs: 55
+Incorrect output class, 0 bugs: 121
+Incorrect output class, 1+ bugs: 70
+SUMMARY (1900)
+Correct output class, 0 bugs: 1632
+Correct output class, 1+ bugs: 57
+Incorrect output class, 0 bugs: 134
+Incorrect output class, 1+ bugs: 77
+SUMMARY (2000)
+Correct output class, 0 bugs: 1708
+Correct output class, 1+ bugs: 61
+Incorrect output class, 0 bugs: 147
+Incorrect output class, 1+ bugs: 84
+SUMMARY (2100)
+Correct output class, 0 bugs: 1790
+Correct output class, 1+ bugs: 63
+Incorrect output class, 0 bugs: 161
+Incorrect output class, 1+ bugs: 86
+SUMMARY (2200)
+Correct output class, 0 bugs: 1866
+Correct output class, 1+ bugs: 69
+Incorrect output class, 0 bugs: 175
+Incorrect output class, 1+ bugs: 90
+SUMMARY (2300)
+Correct output class, 0 bugs: 1952
+Correct output class, 1+ bugs: 69
+Incorrect output class, 0 bugs: 184
+Incorrect output class, 1+ bugs: 95
+SUMMARY (2400)
+Correct output class, 0 bugs: 2028
+Correct output class, 1+ bugs: 72
+Incorrect output class, 0 bugs: 200
+Incorrect output class, 1+ bugs: 100
+SUMMARY (2500)
+Correct output class, 0 bugs: 2111
+Correct output class, 1+ bugs: 75
+Incorrect output class, 0 bugs: 213
+Incorrect output class, 1+ bugs: 101
+SUMMARY (2600)
+Correct output class, 0 bugs: 2193
+Correct output class, 1+ bugs: 75
+Incorrect output class, 0 bugs: 224
+Incorrect output class, 1+ bugs: 108
+SUMMARY (2700)
+Correct output class, 0 bugs: 2268
+Correct output class, 1+ bugs: 77
+Incorrect output class, 0 bugs: 240
+Incorrect output class, 1+ bugs: 115
+SUMMARY (2800)
+Correct output class, 0 bugs: 2344
+Correct output class, 1+ bugs: 78
+Incorrect output class, 0 bugs: 259
+Incorrect output class, 1+ bugs: 119
+SUMMARY (2900)
+Correct output class, 0 bugs: 2427
+Correct output class, 1+ bugs: 79
+Incorrect output class, 0 bugs: 272
+Incorrect output class, 1+ bugs: 122
+SUMMARY (3000)
+Correct output class, 0 bugs: 2507
+Correct output class, 1+ bugs: 81
+Incorrect output class, 0 bugs: 286
+Incorrect output class, 1+ bugs: 126
+SUMMARY (3100)
+Correct output class, 0 bugs: 2592
+Correct output class, 1+ bugs: 82
+Incorrect output class, 0 bugs: 296
+Incorrect output class, 1+ bugs: 130
+SUMMARY (3200)
+Correct output class, 0 bugs: 2675
+Correct output class, 1+ bugs: 83
+Incorrect output class, 0 bugs: 307
+Incorrect output class, 1+ bugs: 135
+SUMMARY (3300)
+Correct output class, 0 bugs: 2746
+Correct output class, 1+ bugs: 87
+Incorrect output class, 0 bugs: 328
+Incorrect output class, 1+ bugs: 139
+SUMMARY (3400)
+Correct output class, 0 bugs: 2824
+Correct output class, 1+ bugs: 89
+Incorrect output class, 0 bugs: 344
+Incorrect output class, 1+ bugs: 143
+SUMMARY (3500)
+Correct output class, 0 bugs: 2902
+Correct output class, 1+ bugs: 94
+Incorrect output class, 0 bugs: 358
+Incorrect output class, 1+ bugs: 146
+SUMMARY (3600)
+Correct output class, 0 bugs: 2991
+Correct output class, 1+ bugs: 97
+Incorrect output class, 0 bugs: 365
+Incorrect output class, 1+ bugs: 147
+SUMMARY (3700)
+Correct output class, 0 bugs: 3061
+Correct output class, 1+ bugs: 100
+Incorrect output class, 0 bugs: 384
+Incorrect output class, 1+ bugs: 155
+SUMMARY (3800)
+Correct output class, 0 bugs: 3130
+Correct output class, 1+ bugs: 104
+Incorrect output class, 0 bugs: 404
+Incorrect output class, 1+ bugs: 162
+SUMMARY (3900)
+Correct output class, 0 bugs: 3184
+Correct output class, 1+ bugs: 109
+Incorrect output class, 0 bugs: 428
+Incorrect output class, 1+ bugs: 179
+SUMMARY (4000)
+Correct output class, 0 bugs: 3253
+Correct output class, 1+ bugs: 112
+Incorrect output class, 0 bugs: 449
+Incorrect output class, 1+ bugs: 186
+SUMMARY (4100)
+Correct output class, 0 bugs: 3314
+Correct output class, 1+ bugs: 117
+Incorrect output class, 0 bugs: 465
+Incorrect output class, 1+ bugs: 204
+SUMMARY (4200)
+Correct output class, 0 bugs: 3389
+Correct output class, 1+ bugs: 121
+Incorrect output class, 0 bugs: 482
+Incorrect output class, 1+ bugs: 208
+SUMMARY (4300)
+Correct output class, 0 bugs: 3455
+Correct output class, 1+ bugs: 124
+Incorrect output class, 0 bugs: 507
+Incorrect output class, 1+ bugs: 214
+SUMMARY (4400)
+Correct output class, 0 bugs: 3513
+Correct output class, 1+ bugs: 128
+Incorrect output class, 0 bugs: 537
+Incorrect output class, 1+ bugs: 222
+SUMMARY (4500)
+Correct output class, 0 bugs: 3575
+Correct output class, 1+ bugs: 133
+Incorrect output class, 0 bugs: 560
+Incorrect output class, 1+ bugs: 232
+SUMMARY (4600)
+Correct output class, 0 bugs: 3643
+Correct output class, 1+ bugs: 138
+Incorrect output class, 0 bugs: 582
+Incorrect output class, 1+ bugs: 237
+SUMMARY (4700)
+Correct output class, 0 bugs: 3711
+Correct output class, 1+ bugs: 143
+Incorrect output class, 0 bugs: 600
+Incorrect output class, 1+ bugs: 246
+SUMMARY (4800)
+Correct output class, 0 bugs: 3776
+Correct output class, 1+ bugs: 148
+Incorrect output class, 0 bugs: 627
+Incorrect output class, 1+ bugs: 249
+SUMMARY (4900)
+Correct output class, 0 bugs: 3835
+Correct output class, 1+ bugs: 152
+Incorrect output class, 0 bugs: 647
+Incorrect output class, 1+ bugs: 266
+SUMMARY (5000)
+Correct output class, 0 bugs: 3895
+Correct output class, 1+ bugs: 154
+Incorrect output class, 0 bugs: 661
+Incorrect output class, 1+ bugs: 290
+FINAL SUMMARY
+Correct output class, 0 bugs: 3895
+Correct output class, 1+ bugs: 154
+Incorrect output class, 0 bugs: 661
+Incorrect output class, 1+ bugs: 290

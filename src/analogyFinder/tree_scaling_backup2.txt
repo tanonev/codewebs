@@ -1,0 +1,39 @@
+3_1
+Elapsed indexing time: 3.158176213
+722128/5000 = 144.4256
+
+3_2
+Elapsed indexing time: 2.936027343
+616095/4999 = 123.24364872974594
+
+3_3
+Elapsed indexing time: 2.028869115
+417922/5000 = 83.5844
+
+3_4
+Elapsed indexing time: 2.960780487
+546010/5000 = 109.202
+
+4_1
+Elapsed indexing time: 9.951962224
+1388524/4998 = 277.8159263705482
+
+4_2
+Elapsed indexing time: 21.420145554
+1582044/4997 = 316.5987592555533
+
+4_3
+Elapsed indexing time: 0.26618133
+96724/1848 = 52.33982683982684
+
+4_4
+Exception in thread "main" java.lang.OutOfMemoryError: GC overhead limit exceeded
+	at models.ast.AST.precomputeHashArrays(AST.java:76)
+	at models.ast.AST.makeCodeBlocks(AST.java:49)
+	at models.Program.createCodeBlocks(Program.java:142)
+	at models.Program.getCodeBlocks(Program.java:69)
+	at models.Assignment.createCodeBlockDataStructures(Assignment.java:152)
+	at models.Assignment.load(Assignment.java:108)
+	at models.Assignment.loadFromFile(Assignment.java:36)
+	at experiments.TreeSizeScaling.run(TreeSizeScaling.java:32)
+	at experiments.TreeSizeScaling.main(TreeSizeScaling.java:45)

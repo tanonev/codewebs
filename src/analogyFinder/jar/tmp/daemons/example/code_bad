@@ -1,0 +1,25 @@
+function [theta, J_history] = gradientDescent (X, y, theta, alpha, num_iters)
+  m = length (y);
+  J_history = zeros (num_iters, 1);
+  for iter = 1:num_iters
+    n = length (theta);
+    newTheta = zeros (n, 1);
+    for j = 1:n
+      accum = 0;
+      for i = 1:m
+        x = X (i, :)';
+        h = theta' * x;
+        delta = h - y (i);
+        t = delta * x (j);
+        accum = accum + t;
+      endfor;
+      step = alpha * accum / m;
+      newTheta (j, 1) = theta (j) - step;
+    endfor;
+    theta = newTheta;
+    J_history (iter) = computeCost (X, y, theta);
+  endfor;
+  endfunction;
+
+;
+endscript;

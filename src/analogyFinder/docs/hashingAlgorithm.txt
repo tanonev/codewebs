@@ -1,0 +1,12 @@
+Each node has a hash code calculation based on its type, name etc. This
+nodeHash is computed only once and saved by the node.
+
+Since nodes are also trees, there is a treeHash associated with each node.
+This is the hash of the node, hashed into the hash of the nodes children.
+
+In general, our task is to calculate the hash of a subforest. The hash of the
+forest is the hash of all the root hashes :)..
+
+Now when we calculate the hash of a complement, sometimes not all of a nodes
+children will be in that complement. Therefore, we can only use a nodes memoized
+treeHash IF all of a nodes descendents are in the subtree we are looking at.
