@@ -1,0 +1,5 @@
+OCTAVE_BASE=/usr/local
+OCTAVE_INCLUDE=$(OCTAVE_BASE)/include/octave-3.6.3/octave
+OCTAVE_LIB=$(OCTAVE_BASE)/lib/octave/3.6.3
+MKOCTFILE=$(OCTAVE_BASE)/bin/mkoctfile
+
