@@ -124,22 +124,13 @@ public class FileSystem {
 	 * the current assignment. Computed by loading the list of corrects.
 	 */
 	public static int getNumAsts() {
-		int numAsts = 0;
-		try {
-			Scanner corruptIn = new Scanner(new File(path + "matching/dist_"
-					+ assnStr + ".txt"));
-			String firstLine = corruptIn.nextLine();
-			Scanner firstLineScanner = new Scanner(firstLine);
-			while (firstLineScanner.hasNextInt()) {
-				firstLineScanner.nextInt();
-				numAsts += 1;
-			}
-			corruptIn.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		return numAsts;
-	}
+      return new File(path + "ast/ast_" + assnStr).listFiles(new FilenameFilter() {
+        @Override
+        public boolean accept(File dir, String name) {
+          return name.toLowerCase().endsWith(".json");
+        }
+      }).length;
+    }
 
 	private static Set<Integer> getIncorrects() {
 		return getAstSet("incorrects", "incorrects");
