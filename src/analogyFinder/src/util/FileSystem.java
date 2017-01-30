@@ -181,26 +181,27 @@ public class FileSystem {
 	 * a particular assignment.
 	 */
 	public static Set<Integer> getCorrupts() {
-		try {
-			Set<Integer> corruptSet = new HashSet<Integer>();
-			Scanner corruptIn = new Scanner(new File(path + "matching/dist_"
-					+ assnStr + ".txt"));
-			String firstLine = corruptIn.nextLine();
-			Scanner firstLineScanner = new Scanner(firstLine);
-			int index = 0;
-			while (firstLineScanner.hasNextInt()) {
-				boolean isCorrupt = firstLineScanner.nextInt() == -1;
-				if (isCorrupt) {
-					corruptSet.add(index);
-				}
-				index += 1;
-			}
-			corruptIn.close();
-			return corruptSet;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			throw new RuntimeException("could not open file",e);
-		}
+        return new HashSet<Integer>();
+	//	try {
+	//		Set<Integer> corruptSet = new HashSet<Integer>();
+	//		Scanner corruptIn = new Scanner(new File(path + "matching/dist_"
+	//				+ assnStr + ".txt"));
+	//		String firstLine = corruptIn.nextLine();
+	//		Scanner firstLineScanner = new Scanner(firstLine);
+	//		int index = 0;
+	//		while (firstLineScanner.hasNextInt()) {
+	//			boolean isCorrupt = firstLineScanner.nextInt() == -1;
+	//			if (isCorrupt) {
+	//				corruptSet.add(index);
+	//			}
+	//			index += 1;
+	//		}
+	//		corruptIn.close();
+	//		return corruptSet;
+	//	} catch (FileNotFoundException e) {
+	//		e.printStackTrace();
+	//		throw new RuntimeException("could not open file",e);
+	//	}
 	}
 
 	private static String getProgramDir() {
