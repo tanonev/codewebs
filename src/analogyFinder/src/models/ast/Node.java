@@ -106,6 +106,7 @@ public class Node {
 		this.size = 1;
 		for(Node child : this.children) {
 			this.size += child.size;
+            child.parent = this;
 		}
 		this.reducedSize = this.size;
 		this.hash = calculateHash();
