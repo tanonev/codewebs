@@ -185,7 +185,7 @@ public class Forest {
     return forest;
   }
 
-  public Forest reduce(Equivalence eq) {
+  public Forest getReduced(Equivalence eq) {
 	// We make a deep copy here to maintain the invariant that methods that
 	// return "new" objects must never mutate the original.
 	Forest copy = new Forest();

@@ -90,7 +90,7 @@ public class Program {
         for (int i = 0; i < tree.getPostorder().size() - 1; i++) {
             Context context = tree.makeLocalContext(null, i);
             for (Equivalence eq : equivalences) {
-                context.reduce(eq);
+                context = context.getReduced(eq);
             }
             reducedLocalContexts.add(context);
         }
