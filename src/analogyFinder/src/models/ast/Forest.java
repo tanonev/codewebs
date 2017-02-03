@@ -11,6 +11,8 @@ import java.util.Set;
 import minions.ForestMapifier;
 import minions.ForestStringifier;
 import models.Program;
+import models.Equivalence;
+import models.Subforest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -186,8 +188,8 @@ public class Forest {
   public Forest reduce(Equivalence eq) {
     for (int i = 0; i < postorder.size(); i++) {
         Forest subtree = new Forest();
-        subtree.makePostorder(postorder.get(i))
-        if (eq.contains(new Subforest(null, subtree))) {
+        subtree.makePostorder(postorder.get(i));
+        if (eq.containsSubforest(new Subforest(null, subtree))) {
             postorder.get(i).markEquivalence(eq);
         }
     }
@@ -195,6 +197,7 @@ public class Forest {
     for (Node root : roots) {
         reduced.makePostorder(root);
     }
+    return reduced;
   }
 
   //----------------------- Private ---------------------------------//

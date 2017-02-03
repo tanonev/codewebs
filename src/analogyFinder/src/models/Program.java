@@ -86,14 +86,14 @@ public class Program {
 	}
     
     public List<Context> getReducedLocalContexts(List<Equivalence> equivalences) {
-        List<Context> reducedContexts;
-        for (int i = 0; i < tree.getPostorder.size() - 1; i++) {
+        List<Context> reducedLocalContexts = new ArrayList<Context>();
+        for (int i = 0; i < tree.getPostorder().size() - 1; i++) {
             Context context = tree.makeLocalContext(null, i);
             for (Equivalence eq : equivalences) {
                 context.reduce(eq);
             }
+            reducedLocalContexts.add(context);
         }
-        reducedLocalContexts.add(context);
         return reducedLocalContexts;
     }
 

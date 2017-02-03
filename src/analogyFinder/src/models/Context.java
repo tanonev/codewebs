@@ -82,7 +82,7 @@ public class Context {
         return size + " " + left + " " + right;
     }
 
-    public Context reduce(Equivalence equivalence) {
+    public void reduce(Equivalence equivalence) {
         right = right.reduce(equivalence);
         left = left.reduce(equivalence);
         hash = null;
