@@ -17,68 +17,74 @@ import models.ast.Node;
  */
 public class Context {
 
-	// To save memory these are pointers.
-	private Forest left;
-	private Forest right;
-	
-	// Cache this. But be wary
-	private Integer hash;
-	private int size;
+    // To save memory these are pointers.
+    private Forest left;
+    private Forest right;
 
-	public Context(Forest left, Forest right, Program program,
-			int start, int end) {
-		this.left = left;
-		this.right = right;
-		this.size = end - start;
-	}
+    // Cache this. But be wary
+    private Integer hash;
+    private int size;
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null || getClass() != obj.getClass())
-			return false;
-		if (hashCode() != obj.hashCode())
-			return false;
+    public Context(Forest left, Forest right, Program program,
+            int start, int end) {
+        this.left = left;
+        this.right = right;
+        this.size = end - start;
+    }
 
-		Context other = (Context) obj;
-		
-		if (!left.equals(other.left))
-			return false;
-		return right.shiftEquals(other.right, size, other.size);
-	}
-	
-	public boolean isIsomorphic(Context other) {
-	  if (!this.equals(other)) return false;
-	  Map<String, String> association = new HashMap<String, String>();
-	  if (!left.checkValidIdentifierMap(other.left, association)) return false;
-	  return right.checkValidIdentifierMap(other.right, association);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        if (hashCode() != obj.hashCode())
+            return false;
 
-  public void setHashCode(int hash) {
-    this.hash = hash;
-  }
+        Context other = (Context) obj;
 
-	@Override
-	public int hashCode() {
-		if (hash != null) {
-			return hash;
-		}
-		
-		int hashCode = left.hashCode();
-		// This is a way to include a symbolic epsilon node in between left
-		// and right.
-		for (int i = 0; i < right.getSize(); i++) {
-			hashCode *= 31;
-		}
-		int hash = 31 * hashCode + right.hashCode();
-		this.hash = hash;
-		return hash;
-	}
+        if (!left.equals(other.left))
+            return false;
+        return right.shiftEquals(other.right, size, other.size);
+    }
 
-	public Node getRoot() {return right.getNode(right.getSize() - 1);}
-	
-	public String toString() {
-	  return size + " " + left + " " + right;
-	}
+    public boolean isIsomorphic(Context other) {
+        if (!this.equals(other)) return false;
+        Map<String, String> association = new HashMap<String, String>();
+        if (!left.checkValidIdentifierMap(other.left, association)) return false;
+        return right.checkValidIdentifierMap(other.right, association);
+    }
+
+    public void setHashCode(int hash) {
+        this.hash = hash;
+    }
+
+    @Override
+    public int hashCode() {
+        if (hash != null) {
+            return hash;
+        }
+
+        int hashCode = left.hashCode();
+        // This is a way to include a symbolic epsilon node in between left
+        // and right.
+        for (int i = 0; i < right.getSize(); i++) {
+            hashCode *= 31;
+        }
+        int hash = 31 * hashCode + right.hashCode();
+        this.hash = hash;
+        return hash;
+    }
+
+    public Node getRoot() {return right.getNode(right.getSize() - 1);}
+
+    public String toString() {
+        return size + " " + left + " " + right;
+    }
+
+    public Context reduce(Equivalence equivalence) {
+        right = right.reduce(equivalence);
+        left = left.reduce(equivalence);
+        hash = null;
+    }
 }

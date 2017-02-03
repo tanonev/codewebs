@@ -183,6 +183,20 @@ public class Forest {
     return forest;
   }
 
+  public Forest reduce(Equivalence eq) {
+    for (int i = 0; i < postorder.size(); i++) {
+        Forest subtree = new Forest();
+        subtree.makePostorder(postorder.get(i))
+        if (eq.contains(new Subforest(null, subtree))) {
+            postorder.get(i).markEquivalence(eq);
+        }
+    }
+    Forest reduced = new Forest();
+    for (Node root : roots) {
+        reduced.makePostorder(root);
+    }
+  }
+
   //----------------------- Private ---------------------------------//
 
   protected Node makePostorder(JSONObject node, Set<String> keywords) {
