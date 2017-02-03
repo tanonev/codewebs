@@ -186,15 +186,23 @@ public class Forest {
   }
 
   public Forest reduce(Equivalence eq) {
-    for (int i = 0; i < postorder.size(); i++) {
+	// We make a deep copy here to maintain the invariant that methods that
+	// return "new" objects must never mutate the original.
+	Forest copy = new Forest();
+    for (Node root : roots) {
+        copy.makePostorder(root);
+    }
+	
+    for (int i = 0; i < copy.getPostorder().size(); i++) {
         Forest subtree = new Forest();
-        subtree.makePostorder(postorder.get(i));
+        subtree.makePostorder(copy.getNode(i));
         if (eq.containsSubforest(new Subforest(null, subtree))) {
-            postorder.get(i).markEquivalence(eq);
+            copy.getPostorder().get(i).markEquivalence(eq);
         }
     }
+    
     Forest reduced = new Forest();
-    for (Node root : roots) {
+    for (Node root : copy.getRoots()) {
         reduced.makePostorder(root);
     }
     return reduced;

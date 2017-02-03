@@ -82,9 +82,10 @@ public class Context {
         return size + " " + left + " " + right;
     }
 
-    public void reduce(Equivalence equivalence) {
-        right = right.reduce(equivalence);
-        left = left.reduce(equivalence);
-        hash = null;
+    public Context reduce(Equivalence equivalence) {
+    	// We can do this safely because we *know* that reduce on a forest does NOT mutate the original forest.
+    	// Do not do this with other things like Subforest.
+    	Context reduced = new Context(left.reduce(equivalence), right.reduce(equivalence), null, 0, size);
+        return reduced;
     }
 }
