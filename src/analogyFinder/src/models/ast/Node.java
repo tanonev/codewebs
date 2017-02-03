@@ -208,12 +208,13 @@ public class Node {
 		if (obj == null || getClass() != obj.getClass())
 			return false;
 		Node other = (Node) obj;
-		if(hashCode() != obj.hashCode())
-			return false;
 
 		if (hasEquivalence()) {
 			return equivalence == other.equivalence;
 		}
+
+		if(hashCode() != obj.hashCode())
+			return false;
 
 		if (name == null) {
 			if (other.name != null)

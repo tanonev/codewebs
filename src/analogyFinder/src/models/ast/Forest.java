@@ -11,6 +11,8 @@ import java.util.Set;
 import minions.ForestMapifier;
 import minions.ForestStringifier;
 import models.Program;
+import models.Equivalence;
+import models.Subforest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -181,6 +183,29 @@ public class Forest {
     }
     forest.findRoots();
     return forest;
+  }
+
+  public Forest getReduced(Equivalence eq) {
+	// We make a deep copy here to maintain the invariant that methods that
+	// return "new" objects must never mutate the original.
+	Forest copy = new Forest();
+    for (Node root : roots) {
+        copy.makePostorder(root);
+    }
+	
+    for (int i = 0; i < copy.getPostorder().size(); i++) {
+        Forest subtree = new Forest();
+        subtree.makePostorder(copy.getNode(i));
+        if (eq.containsSubforest(new Subforest(null, subtree))) {
+            copy.getPostorder().get(i).markEquivalence(eq);
+        }
+    }
+    
+    Forest reduced = new Forest();
+    for (Node root : copy.getRoots()) {
+        reduced.makePostorder(root);
+    }
+    return reduced;
   }
 
   //----------------------- Private ---------------------------------//
