@@ -40,6 +40,7 @@ public class Forest {
 
   // This is only here so that AST can override forest.
   protected Forest() {
+	postorder = new ArrayList<Node>();
     hash = null;
   }
 
@@ -189,6 +190,7 @@ public class Forest {
 	// We make a deep copy here to maintain the invariant that methods that
 	// return "new" objects must never mutate the original.
 	Forest copy = new Forest();
+	
     for (Node root : roots) {
         copy.makePostorder(root);
     }
@@ -201,10 +203,24 @@ public class Forest {
         }
     }
     
+    for(int i = 0; i < copy.postorder.size(); i++) {
+        Node n = copy.postorder.get(i);
+        n.setPostorderIndex(i);
+     }
+    
+    copy.findRoots();
+   
     Forest reduced = new Forest();
     for (Node root : copy.getRoots()) {
         reduced.makePostorder(root);
     }
+    
+    for(int i = 0; i < reduced.postorder.size(); i++) {
+        Node n = reduced.postorder.get(i);
+        n.setPostorderIndex(i);
+     }
+    
+    reduced.findRoots();
     return reduced;
   }
 
@@ -222,7 +238,7 @@ public class Forest {
     return newNode;
   }
   
-  protected Node makePostorder(Node toCopy) {
+  public Node makePostorder(Node toCopy) {
     List<Node> children = new ArrayList<Node>();
     Node newNode = null;
     

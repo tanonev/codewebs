@@ -41,6 +41,8 @@ public class Equivalence {
 	
 	// The priority of the equivalence class
 	private int priority;
+
+	private String type;
 	
 	// Subtree Id counter
 	private IdCounter subtreeIdCounter;
@@ -53,6 +55,18 @@ public class Equivalence {
 		this.id = idCounter;
 		idCounter++;
 		subtreeIdCounter = new IdCounter();
+		this.type = "";
+	}
+	
+	public Equivalence(Set<Subforest> analogies, String name, String type) {
+		this.subforests = analogies;
+		this.name = name.split("_")[1];
+		this.priority = Integer.parseInt(name.split("_")[0]);
+		this.necessaryContexts = new HashSet<Context>();
+		this.id = idCounter;
+		idCounter++;
+		subtreeIdCounter = new IdCounter();
+		this.type = type;
 	}
 	
 	public void addSubforests(Set<Subforest> analogies) {
@@ -73,6 +87,7 @@ public class Equivalence {
 		String eqDir = dir + "/" + name;
 		Equivalence eq = new Equivalence(null, name);
 		eq.loadSubforests(eqDir, keywords);
+		eq.loadMetadata(eqDir);
 		return eq;
 	}
 	
@@ -81,10 +96,9 @@ public class Equivalence {
 	}
 
 	public void saveToFile(String dir) {
-		
 		updateCounter(dir);
-		
 		writeSubforests(dir);
+		writeMetadata(dir);
 		//writeContexts(equivalenceDirName);
 		//writeBugs(equivalenceDirName);
 	}
@@ -105,7 +119,6 @@ public class Equivalence {
 	}
 
 	private String getEquivalenceDirName(String eqDir) {
-		
 		String equivalenceDirName = eqDir + "/" + priority + "_"+ name;
 		return equivalenceDirName;
 	}
@@ -128,6 +141,10 @@ public class Equivalence {
 
 	public int getId() {
 		throw new RuntimeException("not done");
+	}
+	
+	public String getType() {
+		return type;
 	}
 	
 	public boolean containsSubforest(Subforest subforest) {
@@ -185,7 +202,7 @@ public class Equivalence {
 	
 	private void writeMapToFile(String dirName, String map, int id) {
 		FileSystem.createFile(dirName, id + ".map", map);
-		throw new RuntimeException("depricated");
+		throw new RuntimeException("deprecated");
 	}
 	
 	private void writeCodeToFile(String dirName, String code, int id) {
@@ -215,8 +232,15 @@ public class Equivalence {
 		//subtreeIdCounter.setNextId(maxId + 1);
 	}
 
+	private void writeMetadata(String dir) {
+		String dirName = getEquivalenceDirName(dir);
+		JSONObject metadata = new JSONObject();
+		metadata.put("type", type);
+		FileSystem.createFile(dirName, "metadata.txt", metadata.toString());
+	}
 
-
-
-	
+	private void loadMetadata(String dirName) {
+		JSONObject metadata = FileSystem.loadJson(dirName+"/"+"metadata.txt");
+		this.type = metadata.getString("type");
+	}
 }

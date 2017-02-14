@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="daemons/" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/andy/codeweb/ext/commons-math3-3.2/commons-math3-3.2.jar" sourcepath="/home/andy/codeweb/ext/commons-math3-3.2/commons-math3-3.2-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/home/andy/codeweb/ext/commons-math3-3.2/commons-math3-3.2-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/andy/codeweb/ext/commons-daemon-1.0.15/commons-daemon-1.0.15.jar" sourcepath="/home/andy/codeweb/ext/commons-daemon-1.0.15/commons-daemon-1.0.15-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/home/andy/codeweb/ext/commons-daemon-1.0.15/commons-daemon-1.0.15-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/RabbitMQ"/>
+	<classpathentry kind="lib" path="/Users/zhenghao/base/coursera/codewebs/src/analogyFinder/lib/commons-daemon-1.0.15.jar"/>
+	<classpathentry kind="lib" path="/Users/zhenghao/base/coursera/codewebs/src/analogyFinder/lib/commons-math3-3.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

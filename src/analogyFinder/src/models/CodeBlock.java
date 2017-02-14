@@ -60,4 +60,8 @@ public class CodeBlock {
 		subforest.markEquivalence(eq);
 	}
 	
+	public CodeBlock getReduced(Equivalence eq) {
+		return new CodeBlock(program, subforest.getReduced(eq), complement, id);
+	}
+
 }
