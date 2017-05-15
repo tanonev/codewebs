@@ -295,6 +295,10 @@ public class Forest {
 	
 	copy.findRoots();
 	
+	if (eqs.size() == 0) {
+		return copy;
+	}
+	
 	Forest reduced = new Forest();
 	
 	// Reduce the forest

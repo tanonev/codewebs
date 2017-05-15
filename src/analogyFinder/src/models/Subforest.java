@@ -100,4 +100,8 @@ public class Subforest {
 	public Subforest getReduced(Equivalence eq) {
 		return new Subforest(program, forest.getReduced(eq));
 	}
+	
+	public Subforest getReduced(List<Equivalence> equivalences) {
+		return new Subforest(program, forest.getReduced(equivalences));		
+	}
 }
