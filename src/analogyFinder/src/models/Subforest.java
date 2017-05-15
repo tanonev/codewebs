@@ -54,6 +54,10 @@ public class Subforest {
 			root.markEquivalence(equivalence);
 		}
 	}
+	
+	public Forest getForest() {
+		return this.forest;
+	}
 
 	@Override
 	public int hashCode() {

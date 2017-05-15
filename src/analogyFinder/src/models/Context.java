@@ -1,6 +1,7 @@
 package models;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import models.ast.Forest;
@@ -25,9 +26,11 @@ public class Context {
     private Integer hash;
     private int size;
     private int rootIndex;  // We need this mostly because we might re-number nodes when reducing the subtrees
+    private Program program;
 
     public Context(Forest left, Forest right, Program program,
             int start, int end) {
+    	this.program = program;
         this.left = left;
         this.right = right;
         this.size = end - start;
@@ -61,7 +64,12 @@ public class Context {
 
         if (!left.equals(other.left))
             return false;
+
         return right.shiftEquals(other.right, size, other.size);
+    }
+    
+    public int getSize() {
+    	return this.size;
     }
 
     public boolean isIsomorphic(Context other) {
@@ -100,10 +108,22 @@ public class Context {
         return size + " " + left + " " + right;
     }
 
+    public Program getProgram() {
+    	return this.program;
+    }
+    
     public Context getReduced(Equivalence equivalence) {
     	// We can do this safely because we *know* that getReduced on a forest does NOT mutate the original forest.
     	// Do not do this with other things like Subforest.
-    	Context reduced = new Context(left.getReduced(equivalence), right.getReduced(equivalence), null, 0, size, rootIndex);
+    	Context reduced = new Context(left.getReduced(equivalence), right.getReduced(equivalence), this.program, 0, size, rootIndex);
         return reduced;
     }
+    
+    public Context getReduced(List<Equivalence> equivalences) {
+    	// We can do this safely because we *know* that getReduced on a forest does NOT mutate the original forest.
+    	// Do not do this with other things like Subforest.
+    	Context reduced = new Context(left.getReduced(equivalences), right.getReduced(equivalences), this.program, 0, size, rootIndex);
+        return reduced;
+    }
+        
 }

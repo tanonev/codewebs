@@ -1,6 +1,7 @@
 package models.ast;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -59,7 +60,7 @@ public class Forest {
     return postorder;
   }
 
-  protected void findRoots() {
+  public void findRoots() {
     roots = new LinkedList<Node>();
     int currIndex = postorder.size() - 1;
     while(currIndex >= 0) {
@@ -185,19 +186,73 @@ public class Forest {
     forest.findRoots();
     return forest;
   }
-
+  
+  // This method is kind of clunky. It takes a root node and copies all the nodes that are
+  // in the subtree rooted at the node. However, it only adds a node to the postorder of our
+  // current tree if it is also in the postorder of `original`.
+  
+  // It is strange but we have to "maintain" the inconsistency here that a node in the postorder can have
+  // children that are not in the postorder. This weird inconsistency is why we need the `shiftEquals` function
+  // and unfortunately, fixing it would break everything that uses shiftEquals... 
+  // when we port this, we should fix this once and for all everywhere
+  
+  public Node appendSubtreeRootedAtNode(Forest original, Node root) {
+	  Set<Integer> nodeIds = new HashSet<Integer>();
+	  
+	  for (Node n : original.postorder) {
+		  nodeIds.add(n.getId());
+	  }
+	  
+	  List<Node> children = new ArrayList<Node>();
+	  Node newNode = null;
+	  
+	  // Only reduce this subtree if the entire subtree is included in the forest
+	  if(root.hasEquivalence() && original.postorder.indexOf(root) >= root.getSize() - 1) {
+	      String type = "EQUIV";
+	      String name = root.getEquivalence().getName();
+	      newNode = new Node(type, name, children, root.getId());
+	      postorder.add(newNode);
+	  } else {
+		 for (Node oldChild : root.getChildren()) {
+			 Node newChild = appendSubtreeRootedAtNode(original, oldChild);
+			 children.add(newChild);	            
+	      }
+	      String type = root.getType();
+	      String name = root.getName();
+	      newNode = new Node(type, name, children, root.getId());
+	    
+	  	  if (nodeIds.contains(newNode.getId())) {
+	  		  postorder.add(newNode);
+	  	  }
+	  }
+	  
+	  return newNode;
+  }
+  
+  // This is a really really bad function...
+  // We first make a deep copy of a forest because we want to be able to mark equivalences on nodes
+  // without altering the nodes in the original forest. This is important!!
+  
+  // After that, we "reduce" the forest by calling `appendSubtreeRootedAtNode` which has the side-effect
+  // of reducing nodes that have marked equivalences if the full subtree rooted at that node is in
+  // the postorder of our forest.
+  
+  // Honestly, this is an ugly hack to hack around the way the original codewebs research code was set-up
+  // We shouldn't have to do this once we refactor the rest of the codebase.
+  
   public Forest getReduced(Equivalence eq) {
 	// We make a deep copy here to maintain the invariant that methods that
 	// return "new" objects must never mutate the original.
 	Forest copy = new Forest();
 	
     for (Node root : roots) {
-        copy.makePostorder(root);
+        copy.appendSubtreeRootedAtNode(this, root);
     }
-	
+    
     for (int i = 0; i < copy.getPostorder().size(); i++) {
         Forest subtree = new Forest();
-        subtree.makePostorder(copy.getNode(i));
+        subtree.appendSubtreeRootedAtNode(copy, copy.getNode(i));
+        
         if (eq.containsSubforest(new Subforest(null, subtree))) {
             copy.getPostorder().get(i).markEquivalence(eq);
         }
@@ -212,7 +267,7 @@ public class Forest {
    
     Forest reduced = new Forest();
     for (Node root : copy.getRoots()) {
-        reduced.makePostorder(root);
+        reduced.appendSubtreeRootedAtNode(copy, root);
     }
     
     for(int i = 0; i < reduced.postorder.size(); i++) {
@@ -223,6 +278,52 @@ public class Forest {
     reduced.findRoots();
     return reduced;
   }
+  
+  public Forest getReduced(List<Equivalence> eqs) {
+	// We make a deep copy here to maintain the invariant that methods that
+	// return "new" objects must never mutate the original.
+	Forest copy = new Forest();
+	
+    for (Node root : roots) {
+        copy.appendSubtreeRootedAtNode(this, root);
+    }
+
+	for(int i = 0; i < copy.postorder.size(); i++) {
+		Node n = copy.postorder.get(i);
+		n.setPostorderIndex(i);
+	}
+	
+	copy.findRoots();
+	
+	Forest reduced = new Forest();
+	
+	// Reduce the forest
+    for (Equivalence eq : eqs) {
+    	reduced = new Forest();
+    	
+    	for (int i = 0; i < copy.getPostorder().size(); i++) {
+    		Forest subtree = new Forest();
+    		subtree.appendSubtreeRootedAtNode(copy, copy.getNode(i));        
+	        if (eq.containsSubforest(new Subforest(null, subtree))) {
+	            copy.getPostorder().get(i).markEquivalence(eq);
+	        }
+        }
+
+    	for (Node root : copy.getRoots()) {
+    		reduced.appendSubtreeRootedAtNode(copy, root);
+    	}
+    
+    	for(int i = 0; i < reduced.postorder.size(); i++) {
+    		Node n = reduced.postorder.get(i);
+    		n.setPostorderIndex(i);
+    	}
+    	reduced.findRoots();
+    	
+    	copy = reduced;
+    }
+    	
+    return reduced;
+  }  
 
   //----------------------- Private ---------------------------------//
 
@@ -251,7 +352,6 @@ public class Forest {
       String name = toCopy.getName();
       newNode = new Node(type, name, children, toCopy.getId());
     } else {
-      
       String type = "EQUIV";
       String name = toCopy.getEquivalence().getName();
       newNode = new Node(type, name, children, toCopy.getId());
