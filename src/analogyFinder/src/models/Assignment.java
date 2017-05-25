@@ -1,5 +1,6 @@
 package models;
 
+import java.io.File;
 import java.util.*;
 
 import org.json.JSONObject;
@@ -34,6 +35,9 @@ public class Assignment {
 	// A map from the astId of programs with superflous lines to the astIds of their more reasonable counterparts
 	protected Map<Integer, Integer> emptyLineMap;
 	
+	// Collect set of equivalences that we've reduced the assignments on
+	protected List<Equivalence> equivalences;
+	
 	public static Assignment loadFromFile(int max) {
 		return loadFromFile(max, true);
 	}
@@ -63,6 +67,7 @@ public class Assignment {
 	public Set<String> getKeywords() {
 		return keywords;
 	}
+	
 
 	public Set<CodeBlock> codeBlocksFromContext(Context context) {
 		if(!contextBlockMap.containsKey(context)) {
@@ -98,6 +103,10 @@ public class Assignment {
 		}
 		return blocks;
 	}
+	
+	public HashMap<Context, Set<CodeBlock>> getContextBlockMap() {
+		return contextBlockMap;
+	}
 
 	public List<Subforest> getSortedSubforests() {
 		Set<Subforest> forests = getUniqueSubforests();
@@ -116,7 +125,7 @@ public class Assignment {
 
 	public void reduce(Equivalence eq) {
 		System.out.println("reducing...");
-		
+		equivalences.add(eq);
 		List<Program> newPrograms = new ArrayList<Program>();
 		for(Program p : programs) {
 			for(CodeBlock block : p.getCodeBlocks()){
@@ -219,8 +228,9 @@ public class Assignment {
 	private void load(int maxPrograms, boolean makeCodeBlocks) {
 		//emptyLinePrograms = FileSystem.loadToIgnore();
 		emptyLineMap = new TreeMap<Integer, Integer>();
+		equivalences = new ArrayList<Equivalence>();
 		
-		// Before anything, load keywords
+		// Before anything, load keywords and equivalences
 		keywords = FileSystem.loadKeywords();
 
 		// First, load all program asts, code and maps and make codeblocks.
@@ -235,7 +245,7 @@ public class Assignment {
 			System.err.println("Elapsed indexing time: " + (end - start) / 1e9);
 		}
 	}
-
+	
 	private void loadPrograms(int num) {
 		System.out.println("loading programs...");
 		int numAsts = FileSystem.getNumAsts();
@@ -275,6 +285,7 @@ public class Assignment {
 		System.out.println("indexing codeblock dbs...");
 		subforestBlockMap = new HashMap<Subforest, Set<CodeBlock>>();
 		contextBlockMap = new HashMap<Context, Set<CodeBlock>>();
+		
 		for(Program p : programs) {
 			List<CodeBlock> blocks = p.getCodeBlocks();
 			for(CodeBlock block : blocks) {
@@ -286,6 +297,7 @@ public class Assignment {
 	private void addCodeBlockToDataStructures(CodeBlock block) {
 		Subforest forest = block.getSubforest();
 		Context context = block.getContext();
+		
 		if (!subforestBlockMap.containsKey(forest)) {
 			subforestBlockMap.put(forest, new HashSet<CodeBlock>());
 		}

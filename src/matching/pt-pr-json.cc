@@ -7,6 +7,7 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <iomanip>
 
 #include "comment-list.h"
 #include "error.h"
@@ -85,7 +86,7 @@ void tree_print_json::visit_global_command (tree_global_command& cmd) {
   print_astnode_end();
 }
 
-void tree_print_json::visit_static_command (tree_static_command& cmd) {
+void tree_print_json::visit_persistent_command (tree_persistent_command& cmd) {
   print_astnode_start("STATIC", cmd.name());
   
   do_decl_command (cmd);
@@ -504,6 +505,18 @@ void tree_print_json::reset (void) {
   needs_comma = false;
 }
 
+unsigned long hash(unsigned char *str)
+{
+  unsigned long hash = 5381;
+  int c;
+
+  while (c = *str++)
+    hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+
+  return hash;
+}
+
+
 void tree_print_json::print_astnode_start (const char *type, const std::string name) {
   if (needs_comma) os << ",";
   needs_comma = false;
@@ -511,8 +524,15 @@ void tree_print_json::print_astnode_start (const char *type, const std::string n
   increment_indent_level();
   indent(); os << "\"id\": " << id++ << ",\n";
   indent(); os << "\"type\": \"" << type << "\",\n";
+  std::string str;
   if (name.length() > 0) {
-    std::string str = name;
+    if (name.length() > 100) {
+        std::stringstream stream;
+        stream << std::hex << "hash~0x" << hash((unsigned char*)name.c_str());
+        str = stream.str();
+    } else {
+        str = name;
+    }
     std::replace(str.begin(), str.end(), '\n', ';');
     std::replace(str.begin(), str.end(), '\t', ' ');
     replaceAll(str, "\\", "\\\\");

@@ -28,6 +28,10 @@ public class FileSystem {
 	public static void setPath(String newPath){
 		path = newPath;
 	}
+	
+	public static String getPath() {
+		return path;
+	}
 
 	public static void setAssignment(String assnStr) {FileSystem.assnStr = assnStr;}
 

@@ -54,6 +54,10 @@ public class Subforest {
 			root.markEquivalence(equivalence);
 		}
 	}
+	
+	public Forest getForest() {
+		return this.forest;
+	}
 
 	@Override
 	public int hashCode() {
@@ -84,12 +88,20 @@ public class Subforest {
 	}
 
 	public boolean containsId(int id) {
-	  return forest.containsId(id);
+		return forest.containsId(id);
 	}
 	
 	public boolean isIsomorphic(Subforest other) {
-    if (!this.equals(other)) return false;
-    Map<String, String> association = new HashMap<String, String>();
-    return forest.checkValidIdentifierMap(other.forest, association);
+		if (!this.equals(other)) return false;
+		Map<String, String> association = new HashMap<String, String>();
+		return forest.checkValidIdentifierMap(other.forest, association);
+	}
+	
+	public Subforest getReduced(Equivalence eq) {
+		return new Subforest(program, forest.getReduced(eq));
+	}
+	
+	public Subforest getReduced(List<Equivalence> equivalences) {
+		return new Subforest(program, forest.getReduced(equivalences));		
 	}
 }
